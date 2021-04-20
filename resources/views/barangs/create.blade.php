@@ -35,6 +35,9 @@
                     <input type="text" name="jumlah_stok" class="form-control" id="jumlah_stok" aria-describedby="jumlah_stok" placeholder="Masukkan Jumlah Stok">
                 </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
+            <div class="float-right">
+                <a class="btn btn-secondary" href="{{ route('barangs.index') }}"> Kembali</a>
+            </div>
             </form>
             </div>
         </div>

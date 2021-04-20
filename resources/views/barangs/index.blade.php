@@ -37,10 +37,7 @@
             <td>{{ $barang->nama_barang }}</td>
             <td>{{ $barang->jumlah_stok }}</td>
             <td>
-                <form action="{{ route('barangs.destroy',$barang->id) }}" method="POST">
-   
-                    <a class="btn btn-info btn-sm" href="{{ route('barangs.show',$barang->id) }}">Detail</a>
-    
+                <form action="{{ route('barangs.destroy',$barang->id) }}" method="POST"> 
                     <a class="btn btn-primary btn-sm" href="{{ route('barangs.edit',$barang->id) }}">Edit</a>
    
                     @csrf
