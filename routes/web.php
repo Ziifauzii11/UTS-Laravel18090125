@@ -18,4 +18,4 @@ use App\Http\Controllers\BarangsController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('barangs', BarangsController::class);
+Route::resource('list_barang', BarangsController::class);

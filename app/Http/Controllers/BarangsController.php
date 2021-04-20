@@ -15,14 +15,14 @@ class BarangsController extends Controller
     public function index()
     {
 
-        $barangs = Barang::all(); //Fungsi untuk mengambil seluruh data pada tabel barangs
+        $list_barang = Barang::all(); //Fungsi untuk mengambil seluruh data pada tabel list_barang
 
-        return view('barangs.index', compact('barangs')); //Redirect ke halaman barangs/index.blade.php dengan membawa data barangs tadi
+        return view('list_barang.index', compact('list_barang')); //Redirect ke halaman list_barang/index.blade.php dengan membawa data list_barang tadi
     }
 
     public function create()
     {
-        return view('barangs.create'); //Redirect ke halaman barangs/create.blade.php
+        return view('list_barang.create'); //Redirect ke halaman list_barang/create.blade.php
     }
 
     public function store(Request $request)
@@ -35,21 +35,16 @@ class BarangsController extends Controller
 
         Barang::create($request->all()); //Fungsi untuk menyimpan data inputan kita
 
-        return redirect()->route('barangs.index')
-            ->with('success', 'Data Berhasil Ditambah.'); //Redirect ke halaman barangs/index.blade.php dengan pesan success
+        return redirect()->route('list_barang.index')
+            ->with('success', 'Data Berhasil Ditambah.'); //Redirect ke halaman list_barang/index.blade.php dengan pesan success
     }
 
-    public function show(Barang $barang)
+    public function edit(barang $list_barang)
     {
-        return view('barangs.detail', compact('barang')); //Redirect ke halaman barangs/detail.blade.php dengan membawa data barang sesuai ID yang dipilih
+        return view('list_barang.edit', compact('list_barang')); //Redirect ke halaman list_barang/edit.blade.php dengan membawa data barang sesuai ID yang dipilih
     }
 
-    public function edit(barang $barang)
-    {
-        return view('barangs.edit', compact('barang')); //Redirect ke halaman barangs/edit.blade.php dengan membawa data barang sesuai ID yang dipilih
-    }
-
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, Barang $list_barang)
     {
         $request->validate([
             'katagori_barang' => 'required', //nama form "katagori_barang" harus diisi (required)
@@ -57,17 +52,17 @@ class BarangsController extends Controller
             'jumlah_stok' => 'required', //nama form "jumlah_stok" harus diisi (required)
         ]); //Memvalidasi inputan yang kita kirim apakah sudah benar
 
-        $barang->update($request->all()); //Fungsi untuk mengupdate data inputan kita
+        $list_barang->update($request->all()); //Fungsi untuk mengupdate data inputan kita
 
-        return redirect()->route('barangs.index')
-            ->with('success', 'Data Berhasil Diupdate'); //Redirect ke halaman barangs/index.blade.php dengan pesan success
+        return redirect()->route('list_barang.index')
+            ->with('success', 'Data Berhasil Diupdate'); //Redirect ke halaman list_barang/index.blade.php dengan pesan success
     }
 
-    public function destroy(Barang $barang)
+    public function destroy(Barang $list_barang)
     {
-        $barang->delete(); //Fungsi untuk menghapus data sesuai dengan ID yang dipilih
+        $list_barang->delete(); //Fungsi untuk menghapus data sesuai dengan ID yang dipilih
 
-        return redirect()->route('barangs.index')
-            ->with('success', 'Data Berhasil Dihapus'); //Redirect ke halaman barangs/index.blade.php dengan pesan success
+        return redirect()->route('list_barang.index')
+            ->with('success', 'Data Berhasil Dihapus'); //Redirect ke halaman list_barang/index.blade.php dengan pesan success
     }
 }
